@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+{% load widget_tweaks %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>toxic comment</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span></button>
+      <a class="navbar-brand btn btn-light" href="#">Toxic Comment Classifier</a>
+    </nav>
+    <div class="container">
+      <div class="jumbotron">
+        <h2><span class="badge badge-success">Classify text toxicity</span></h2><br>
+
+        <form class="" method="post">
+          {% csrf_token %}
+           {% for field in form %}
+             {% render_field field class="form-control" placeholder='Type Comment' %}
+           {% endfor %}
+           <br>
+          <input class="btn btn-danger" type="submit" value="predict">
+        </form>
+      </div>
+
+      <div class="jumbotron">
+        <div class="" style="font-size:120%;">
+          <p><span class="badge badge-info">Toxic</span> : {{toxic}} %</p>
+          <p><span class="badge badge-info">Severe Toxic</span> : {{severe_toxic}} %</p>
+          <p><span class="badge badge-info">obsense</span> : {{obsense}} %</p>
+          <p><span class="badge badge-info">Threat</span> : {{threat}} %</p>
+          <p><span class="badge badge-info">Insult</span> : {{insult}} %</p>
+          <p><span class="badge badge-info">Hate</span> : {{hate}} %</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
